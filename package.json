@@ -1,0 +1,27 @@
+{
+  "name": "nextresponder",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.2.3",
+    "bootstrap": "^5.2.2",
+    "bootstrap-icons": "^1.10.3",
+    "moment": "^2.29.4",
+    "next": "14.0.4",
+    "next-transpile-modules": "^10.0.1",    
+    "react": "^18",
+    "react-dom": "^18",
+    "react-redux": "^8.1.1",
+    "react-select": "^5.8.0",
+    "react-transition-group": "^4.4.5",
+    "sweetalert2": "^11.7.0",
+    "sweetalert2-react-content": "^5.0.7"
+  }
+}
