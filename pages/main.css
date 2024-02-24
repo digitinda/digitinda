@@ -1,0 +1,81 @@
+
+#header{
+	background-color: #061E45;
+	padding: 20px;
+}
+
+#logo-wrapper{
+
+}
+
+.navbar-nav li{
+	padding:15px;
+}
+
+.navbar-nav li a{
+	font-size:18px;
+}
+
+.slider-main{
+	width: 100%;
+    position: relative;
+}
+
+.slider-main .slider-wrapper{
+	width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.fade-enter{
+   transform: translate(25%,0);
+   opacity: 0;
+}
+
+.fade-exit{
+   transform: translate(0%, 0);
+   opacity: 1;
+}
+
+.fade-enter-active{
+   transform: translate(0,0);
+   opacity: 1;
+}
+
+.fade-exit-active{
+   transform: translate(-25%, 0);
+   opacity: 0;
+}
+
+.fade-enter-active,
+.fade-exit-active{
+   transition: transform 500ms, opacity 500ms;
+}
+
+.slider-nav{
+	position: absolute;
+    bottom: 0px;
+    width:100%;
+    background-color: #00000087;
+    padding: 10px;
+}
+
+.slider-nav .slider-nav-items{
+	display: flex;
+	justify-content: center;
+	column-gap: 10px;
+}
+
+.slider-nav .nav-item .nav-btn{
+	width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 30px;
+    border: unset;
+}
+
+.slider-nav .nav-item.active .nav-btn{
+
+	background-color: #000;
+
+}
