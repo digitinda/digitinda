@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/mobipos",
+  basePath: "",
 };
 
 module.exports = nextConfig;
