@@ -8,6 +8,11 @@ export const NavBar = (props) => {
 	const { toggleDrawer, isOpen } = props
 	const [ isOpenMenu, setOpenMenu ] = useState(false)
 
+	const doLogout = () => {
+		localStorage.clear()
+		window.location.href = "/logout"
+	}
+
 	return (
 		<nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">			 
 	        <a className="navbar-brand ps-3" href="index.html">MobiPOS</a>            
@@ -24,7 +29,7 @@ export const NavBar = (props) => {
 	                <ul className={ (isOpenMenu) ? "dropdown-menu dropdown-menu-end show" : "dropdown-menu dropdown-menu-end" } aria-labelledby="navbarDropdown" data-bs-popper="static">
 	                    <li><a className="dropdown-item" href="#!">Profile</a></li>	                    
 	                    <li><hr className="dropdown-divider" /></li>
-	                    <li><a className="dropdown-item" href="#!">Logout</a></li>
+	                    <li><button className="dropdown-item" onClick={(e) => doLogout() }>Logout</button></li>
 	                </ul>
 	            </li>
 	        </ul>

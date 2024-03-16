@@ -1,15 +1,31 @@
 import React from 'react'
 import { MainLayout } from '../../lib/layouts/pageLayout'
-
+import * as invapi from '../../lib/services/inventory-services'
 
 class InventoryPage extends React.Component  {
 
 
 	constructor(props) {
     	super(props);
-
+    	this.state = {
+    		cats: []
+    	}
     }
 
+    initCats(){
+    	invapi.cat_list().then((res) => {
+    		if(res.status){
+    			var data = res.data
+    			this.setState({
+    				cats: data.items
+    			})
+    		}
+    	})
+    }
+
+    componentDidMount(){
+    	this.initCats()
+    }
 
     render(){
     	return (
