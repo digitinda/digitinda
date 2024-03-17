@@ -1,5 +1,6 @@
 import React from 'react'
 import { MainLayout } from '../../lib/layouts/pageLayout'
+import { ItemList } from '../../lib/components/inventoryCom'
 import * as invapi from '../../lib/services/inventory-services'
 
 class InventoryPage extends React.Component  {
@@ -8,16 +9,25 @@ class InventoryPage extends React.Component  {
 	constructor(props) {
     	super(props);
     	this.state = {
-    		cats: []
+    		cats: [],
+    		isLoading: true
     	}
     }
 
     initCats(){
     	invapi.cat_list().then((res) => {
     		if(res.status){
+    			
     			var data = res.data
+    			var result_arr = []
+    			
+    			if(data.items.length > 0){ 
+    				result_arr = data.items
+    			}
+
     			this.setState({
-    				cats: data.items
+    				cats: result_arr,
+    				isLoading: false
     			})
     		}
     	})
@@ -28,88 +38,36 @@ class InventoryPage extends React.Component  {
     }
 
     render(){
+
+    	if(this.state.isLoading){
+    		return (
+    			<div>Please wait...</div>
+    		)
+    	}
+
+    	if(this.state.cats.length == 0){
+    		return (
+    			<div>Empty Items</div>
+    		)
+    	}
+
     	return (
     		<MainLayout>
     			<div className='row'>
-    				<div className='col-md-4'>
-    					<div className='card mt-5'>
-    						<div className='card-header'><h4 className='card-title'>Gasoline</h4></div>
-    						<div className='card-body'>
-    							<ul class="list-group list-group-flush">
-								  <li class="list-group-item">
-								  		<div className='row'>
-								  			<div className='col-md-8'>
-								  				Cras justo odio
-								  			</div>
-								  			<div className='col-md-4 text-center'>
-								  				<div>No of Stock:</div>
-								  				<div>4</div>
-								  			</div>
-								  		</div>
-								  	</li>
-								  <li class="list-group-item"><div className='row'>
-								  			<div className='col-md-8'>
-								  				Cras justo odio
-								  			</div>
-								  			<div className='col-md-4 text-center'>
-								  				<div>No of Stock:</div>
-								  				<div>4</div>
-								  			</div>
-								  		</div></li>
-								  <li class="list-group-item"><div className='row'>
-								  			<div className='col-md-8'>
-								  				Cras justo odio
-								  			</div>
-								  			<div className='col-md-4 text-center'>
-								  				<div>No of Stock:</div>
-								  				<div>4</div>
-								  			</div>
-								  		</div></li>
-								  <li class="list-group-item">Porta ac consectetur ac</li>
-								  <li class="list-group-item">Vestibulum at eros</li>
-								</ul>
-    						</div>
-    					</div>
-    				</div>
-    				<div className='col-md-4'>
-    					<div className='card mt-5'>
-    						<div className='card-header'><h4 className='card-title'>Gasoline</h4></div>
-    						<div className='card-body'>
-    							<ul class="list-group list-group-flush">
-								  <li class="list-group-item">
-								  		<div className='row'>
-								  			<div className='col-md-8'>
-								  				Cras justo odio
-								  			</div>
-								  			<div className='col-md-4 text-center'>
-								  				<div>No of Stock:</div>
-								  				<div>4</div>
-								  			</div>
-								  		</div>
-								  	</li>
-								  <li class="list-group-item"><div className='row'>
-								  			<div className='col-md-8'>
-								  				Cras justo odio
-								  			</div>
-								  			<div className='col-md-4 text-center'>
-								  				<div>No of Stock:</div>
-								  				<div>4</div>
-								  			</div>
-								  		</div></li>
-								  <li class="list-group-item"><div className='row'>
-								  			<div className='col-md-8'>
-								  				Cras justo odio
-								  			</div>
-								  			<div className='col-md-4 text-end'>
-								  				
-								  			</div>
-								  		</div></li>
-								  <li class="list-group-item">Porta ac consectetur ac</li>
-								  <li class="list-group-item">Vestibulum at eros</li>
-								</ul>
-    						</div>
-    					</div>
-    				</div>  				
+    				 {
+    				 	this.state.cats.map((item, index) => {
+    				 		return (
+    				 			<div className='col-md-4' key={'col-' + index}>
+	    				 			<div className='card mt-5'>
+			    						<div className='card-header'><h4 className='card-title'>{item.catname}</h4></div>
+			    						<div className='card-body'>
+    				 						<ItemList catno={item['category_no']} />
+    				 					</div>
+    				 				</div>
+    				 			</div>
+    				 		)
+    				 	})
+    				 }
     			</div>
     		</MainLayout>
     	)

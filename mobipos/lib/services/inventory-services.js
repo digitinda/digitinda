@@ -47,3 +47,29 @@ export const edit_items = async (item_no, form) => {
 	return false
 
 }
+
+
+export const item_stocks = async ({ item_no }) => {	
+
+	var result = await invapi.get("/item-stocks/" + item_no)
+
+	if(result.status != 200 || result.status != 201){
+		return result.data
+	}
+
+	return false
+
+}
+
+
+export const cat_items = async ({ catno }) => {	
+
+	var result = await invapi.get("/cat-items/" + catno)
+
+	if(result.status != 200 || result.status != 201){
+		return result.data
+	}
+
+	return false
+
+}

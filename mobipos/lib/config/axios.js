@@ -51,3 +51,11 @@ export const invapi = axios.create({
   }
 });
 
+export const menuapi = axios.create({
+  baseURL: base_url + "/menu",  
+  timeout: 30000,
+  headers: {
+      Authorization: 'Bearer ' + token
+  }
+});
+
