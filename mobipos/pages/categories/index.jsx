@@ -156,6 +156,14 @@ class CategoryPage extends React.Component  {
 
     	return (
     		<MainLayout>
+    			<h1 className="mt-4">Categories</h1>
+                <ol className="breadcrumb mb-4">
+                    <li className="breadcrumb-item">Dashboard</li>
+                    <li className="breadcrumb-item active">Items and Menus</li>
+                </ol>
+                 <div className='mb-3'>
+                	<button type='button' className='btn btn-md btn-primary' onClick={(e) => this.toggleAddModal(e) }>New Menu</button>
+                </div>
     			<div className='row'>
     				<div className='col-md-6'>
     					<div className='card mt-5'>
@@ -176,13 +184,13 @@ class CategoryPage extends React.Component  {
     			</div>
     			
     			<form onSubmit={(e) => this.onUpdateItem(e)} method='post'>
-	    			<BModal title={"Update Item"} is_open={this.state.isOpenModal} onClose={(e) => this.toggleModal(this.state.item_row) } footer={<button className='btn btn-md btn-primary'>Update</button>} >
+	    			<BModal id='updateitem' title={"Update Item"} is_open={this.state.isOpenModal} onClose={(e) => this.toggleModal(this.state.item_row) } footer={<button className='btn btn-md btn-primary'>Update</button>} >
 	    				<BInputText id={this.state.item_row.category_no} label={"Category Name"} name="catname" value={this.state.item_row.catname} error_msg={"This field is required"} is_valid={true} />
 	    				<BTextField id={this.state.item_row.category_no} label={"Category Description"} name={'catdesc'} value={this.state.item_row.catdesc} error_msg={"This field is required"} is_valid={true} />
 	    			</BModal>
 	    		</form>
 
-	    		<BModal title={"Delete Item"} is_open={this.state.modalDelItem} onClose={(e) => this.toggleDelItem(this.state.item_row) } footer={<button className='btn btn-md btn-danger' onClick={(e) => this.onDeleteCat(e)}>Delete</button>} >
+	    		<BModal id='delitem' title={"Delete Item"} is_open={this.state.modalDelItem} onClose={(e) => this.toggleDelItem(this.state.item_row) } footer={<button className='btn btn-md btn-danger' onClick={(e) => this.onDeleteCat(e)}>Delete</button>} >
     				 <p>Are you sure to delete: <strong>{this.state.item_row.catname}?</strong></p>
     			</BModal>
 

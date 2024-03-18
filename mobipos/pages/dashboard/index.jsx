@@ -110,10 +110,7 @@ class MainMobiPage extends React.Component  {
 
       return(
           <MainLayout>
-            <h1 className="mt-4">Welcome</h1>
-            <ol className="breadcrumb mb-4">
-                <li className="breadcrumb-item active">Naruto Uzumaki</li>
-            </ol>
+            <h1 className="mt-4">Dashboard</h1>           
             <div className='row'>
               <div className='col-md-4'>
                 <div className='card'>

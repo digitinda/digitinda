@@ -66,11 +66,11 @@ export const SideBar = (props) => {
 	                        Menu
 	                        <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
 	                     </Link>
-	                      <Link className="nav-link collapsed" href="/categories" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+	                     {/* <Link className="nav-link collapsed" href="/categories" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 	                        <div className="sb-nav-link-icon"><i className="fas fa-book-open"></i></div>
 	                        History
 	                        <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
-	                     </Link>	                     		                   
+	                     </Link>*/}	                     		                   
 	                </div>
 	            </div>
 	        </nav>

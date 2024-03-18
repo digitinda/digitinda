@@ -73,3 +73,27 @@ export const cat_items = async ({ catno }) => {
 	return false
 
 }
+
+export const add_item = async (form) => {	
+
+	var result = await invapi.post("/add-item", form)
+
+	if(result.status != 200 || result.status != 201){
+		return result.data
+	}
+
+	return false
+
+}
+
+export const add_cat_item = async (form) => {	
+
+	var result = await invapi.post("/cat-item", form)
+
+	if(result.status != 200 || result.status != 201){
+		return result.data
+	}
+
+	return false
+
+}

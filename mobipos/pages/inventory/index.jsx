@@ -1,6 +1,8 @@
 import React from 'react'
 import { MainLayout } from '../../lib/layouts/pageLayout'
 import { ItemList } from '../../lib/components/inventoryCom'
+import { BModal, BInputText, BTextField, SelectTag } from '../../lib/components/elements'
+
 import * as invapi from '../../lib/services/inventory-services'
 
 class InventoryPage extends React.Component  {
@@ -10,7 +12,8 @@ class InventoryPage extends React.Component  {
     	super(props);
     	this.state = {
     		cats: [],
-    		isLoading: true
+    		isLoading: true,
+            modalNewItem: false
     	}
     }
 
@@ -37,6 +40,51 @@ class InventoryPage extends React.Component  {
     	this.initCats()
     }
 
+    toggleNewItem(e){
+        e.preventDefault()
+        this.setState({
+            modalNewItem: !this.state.modalNewItem
+        })
+    }
+
+    onAddItem(e){
+        e.preventDefault()
+        
+        var itemName = e.target.itemname.value
+        var itemPrice = e.target.price.value
+        var itemSale = e.target.salesprice.value
+        var cat = e.target.selcat.value
+
+        var form = {
+            'item_name': itemName,
+            'actual_price': itemPrice,
+            'sales_price': itemSale,
+            'item_desc': ''
+        };
+
+        invapi.add_item(form).then((res) => {
+            if(res){
+
+                var item_no = res.data.item_no
+                var _form = {
+                    'item_no': item_no,
+                    'category_no': cat
+                };
+
+                invapi.add_cat_item(_form).then((_res) => {
+                    
+                    this.setState({
+                        isLoading: true,
+                         modalNewItem: !this.state.modalNewItem
+                    })
+
+                    this.initCats()
+                })
+
+            }
+        })
+    }
+
     render(){
 
     	if(this.state.isLoading){
@@ -53,6 +101,14 @@ class InventoryPage extends React.Component  {
 
     	return (
     		<MainLayout>
+                <h1 className="mt-4">Inventory</h1>
+                <ol className="breadcrumb mb-4">
+                    <li className="breadcrumb-item">Dashboard</li>
+                    <li className="breadcrumb-item active">Items</li>
+                </ol>
+                <div className='mb-3'>
+                    <button type='button' className='btn btn-md btn-primary' onClick={(e) => this.toggleNewItem(e) }>New Item</button>
+                </div>
     			<div className='row'>
     				 {
     				 	this.state.cats.map((item, index) => {
@@ -69,6 +125,21 @@ class InventoryPage extends React.Component  {
     				 	})
     				 }
     			</div>
+
+                <form onSubmit={(e) => this.onAddItem(e)} method='post' key={'update-menu'}>
+                    <BModal id='updatemenu' title={"Add Item"} is_open={this.state.modalNewItem} onClose={(e) => this.toggleNewItem(e) } footer={<button className='btn btn-md btn-primary'>Add</button>} >
+                        <SelectTag opts={this.state.cats.map((item ) => {
+                            return {
+                                value: item.category_no,
+                                label: item.catname
+                            }
+                        })} id="selcat" label="Item category" is_valid={true}/>
+                        <BInputText id={"itemname"} label={"Item Name"} name="itemname" error_msg={"This field is required"} is_valid={true} />
+                        <BInputText type='number' id={"price"} label={"Price"} name="price" error_msg={"This field is required"} is_valid={true} />
+                        <BInputText type='number' id={"salesprice"} label={"Sales Price"} name="salesprice" error_msg={"This field is required"} is_valid={true} />
+                    </BModal>
+                </form>
+
     		</MainLayout>
     	)
     }
