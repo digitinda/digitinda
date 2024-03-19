@@ -1,5 +1,6 @@
 import React from 'react'
 import * as loginapi from '../../lib/services/user-services'
+import Link from 'next/link'
 
 class LoginPage extends React.Component  {
 
@@ -79,7 +80,7 @@ class LoginPage extends React.Component  {
 			                                            </div>			                                        
 			                                    </div>
 			                                    <div className="card-footer text-center py-3">
-			                                        <div className="small"><a href="register.html">Need an account? Sign up!</a></div>
+			                                        <div className="small"><Link href="/register">Need an account? Sign up!</Link></div>
 			                                    </div>
 			                                </div>
 		                          		</form>

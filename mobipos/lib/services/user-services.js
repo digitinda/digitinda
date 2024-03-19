@@ -17,3 +17,16 @@ export const do_login = async (username, password) => {
 	return false
 
 }
+
+
+export const do_register = async (form) => {	
+
+	var result = await userapi.post("/register", form)
+
+	if(result.status != 200 || result.status != 201){
+		return result.data
+	}
+
+	return false
+
+}
