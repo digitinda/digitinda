@@ -5,8 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './main.css'
 import App from 'next/app'
-import {createStore} from 'redux';
-import { Provider } from 'react-redux';
 
 class MyApp extends App {
   // Only uncomment this method if you have blocking data requirements for
