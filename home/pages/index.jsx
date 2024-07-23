@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { SliderMain } from './../lib/components/Sliders'
+import { Header } from './../lib/components/common'
 
 class MainPage extends React.Component  {
 
@@ -17,46 +18,9 @@ class MainPage extends React.Component  {
 
       return (
         <>
+        <Header />
         <div className='container-wrapper'>
-            <header className='header' id='header'>
-              <div className='top-nav'>
-
-              </div>
-          </header>
-          <div className='container-fluid'>
-              <div className='text-center'>
-                <img src={'/digitinda-logo1.png'} height="70px" />
-              </div>
-
-              <div className='row'>
-                <div className='col-md-10'>
-                    <nav className='navbar navbar-expand-lg navbar-light bg-light"'>
-                       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                          <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">HTML</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">WordPress</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Angular</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">VueJS</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">ReactJS</a>
-                          </li>
-                           <li class="nav-item">
-                            <a class="nav-link" href="#">Admin Template</a>
-                          </li>
-                       </ul>
-                    </nav>
-                </div>
-              </div>
+          <div className='container-fluid'>            
               <div className='divider'></div>
               <div className='row my-5 align-items-center'>
                 <div className='col-md-6'>
@@ -78,21 +42,21 @@ class MainPage extends React.Component  {
               <div className='row'>
                 <div className='col-md-4'>
                   <div className='card mb-3'>
-                      <img src="/blank-image.jpg" className="card-img-top" height="200px"/>
+                      <img src="/images/thumb1.png" className="card-img-top" height="200px"/>
                       <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
+                        <h5 className="card-title">WordPress Themes</h5>
                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary">Go somewhere</a>
+                        <a href="#" className="btn btn-primary">Browse</a>
                       </div>
                   </div>
                 </div>
                 <div className='col-md-4'>
                   <div className='card mb-3'>
-                      <img src="/blank-image.jpg" className="card-img-top" height="200px"/>
+                      <img src="/images/thumb2.png" className="card-img-top" height="200px"/>
                       <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
+                        <h5 className="card-title">Admin Templates</h5>
                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary">Go somewhere</a>
+                        <a href="#" className="btn btn-primary">Browse</a>
                       </div>
                   </div>
                 </div>
